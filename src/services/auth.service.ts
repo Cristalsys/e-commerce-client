@@ -74,11 +74,11 @@ class AuthService {
 	}
 
 	private _saveTokenStorage(accessToken: string) {
-		const isProduction = process.env.NODE_ENV === 'production'
-		const domain = isProduction ? '.e-commerce-client-opal.vercel.app' : 'localhost'
+		// const isProduction = process.env.NODE_ENV === 'production'
+		// const domain = isProduction ? '.e-commerce-client-opal.vercel.app' : 'localhost'
 
 		Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
-			domain,
+			// domain,
 			//1h
 			expires: 1 / 24,
 			sameSite: 'strict',
