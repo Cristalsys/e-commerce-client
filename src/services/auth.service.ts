@@ -18,7 +18,9 @@ class AuthService {
 	private _AUTH = '/auth'
 
 	async main(type: 'login' | 'register', data: IAuthData) {
-		const response = await axiosClassic.post<IAuthResponse>(`${this._AUTH}/${type}`, data)
+		const response = await axiosClassic.post<IAuthResponse>(`${this._AUTH}/${type}`, data, {
+			withCredentials: true
+		})
 
 		if (response.data.accessToken) {
 			this._saveTokenStorage(response.data.accessToken)
@@ -43,7 +45,9 @@ class AuthService {
 	// CLIENT
 	async getNewTokens() {
 		try {
-			const response = await axiosClassic.post<IAuthResponse>(`${this._AUTH}/access-token`)
+			const response = await axiosClassic.post<IAuthResponse>(`${this._AUTH}/access-token`, {
+				withCredentials: true
+			})
 
 			if (response.data.accessToken) {
 				this._saveTokenStorage(response.data.accessToken)
