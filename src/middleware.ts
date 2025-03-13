@@ -2,8 +2,8 @@ import { jwtVerify } from 'jose'
 import type { NextRequest } from 'next/server'
 
 import { PAGE } from './config/public-page.config'
-import { protectLoginPages } from './server-actions/middlewares/protect-login.middleware'
-import { protectProfile } from './server-actions/middlewares/protect-profile.middleware'
+// import { protectLoginPages } from './server-actions/middlewares/protect-login.middleware'
+// import { protectProfile } from './server-actions/middlewares/protect-profile.middleware'
 import { EnumRole } from './types/user.types'
 
 export async function middleware(request: NextRequest) {
@@ -12,17 +12,17 @@ export async function middleware(request: NextRequest) {
 	const url = new URL(request.url)
 	const pathname = url.pathname
 
-	if (
-		pathname.includes('/profile') ||
-		pathname.includes('/favorites') ||
-		pathname.includes('/orders')
-	) {
-		return protectProfile(request)
-	}
+	// if (
+	// 	pathname.includes('/profile') ||
+	// 	pathname.includes('/favorites') ||
+	// 	pathname.includes('/orders')
+	// ) {
+	// 	return protectProfile(request)
+	// }
 
-	if (pathname.includes(PAGE.LOGIN) || pathname.includes(PAGE.REGISTER)) {
-		return protectLoginPages(request)
-	}
+	// if (pathname.includes(PAGE.LOGIN) || pathname.includes(PAGE.REGISTER)) {
+	// 	return protectLoginPages(request)
+	// }
 
 	if (!token) {
 		if (pathname.startsWith('/admin')) {
