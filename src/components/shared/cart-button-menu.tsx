@@ -13,6 +13,8 @@ interface Props {
 	className?: string
 }
 
+// 23322
+
 export const CartButtonMenu: React.FC<Props> = ({ className }) => {
 	const { items } = useTypedSelector(state => state.cart)
 
