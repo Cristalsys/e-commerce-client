@@ -81,7 +81,8 @@ class AuthService {
 			// domain,
 			//1h
 			expires: 1 / 24,
-			sameSite: 'strict',
+			// sameSite: 'strict',
+			sameSite: 'none',
 			secure: true
 		})
 	}
