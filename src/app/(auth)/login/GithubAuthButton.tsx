@@ -4,7 +4,7 @@ import { Button } from '@/components'
 
 const GithubLoginButton = () => {
 	const handleLogin = () => {
-		window.location.href = 'http://localhost:4200/api/auth/github'
+		window.location.href = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/github`
 	}
 
 	return (

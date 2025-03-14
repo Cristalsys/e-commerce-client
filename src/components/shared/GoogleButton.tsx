@@ -4,7 +4,7 @@ import { Button } from '@/components'
 
 const GoogleButton = () => {
 	const handleLogin = () => {
-		window.location.href = 'http://localhost:4200/api/auth/google'
+		window.location.href = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/google`
 	}
 
 	return (

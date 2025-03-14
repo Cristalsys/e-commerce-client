@@ -23,7 +23,7 @@ class AuthService {
 		})
 
 		if (response.data.accessToken) {
-			this._saveTokenStorage(response.data.accessToken)
+			this.saveTokenStorage(response.data.accessToken)
 			store.dispatch(setAuthData(response.data))
 		}
 
@@ -50,7 +50,7 @@ class AuthService {
 			})
 
 			if (response.data.accessToken) {
-				this._saveTokenStorage(response.data.accessToken)
+				this.saveTokenStorage(response.data.accessToken)
 
 				store.dispatch(setAuthData(response.data))
 			}
@@ -73,7 +73,7 @@ class AuthService {
 		return response
 	}
 
-	private _saveTokenStorage(accessToken: string) {
+	saveTokenStorage(accessToken: string) {
 		// const isProduction = process.env.NODE_ENV === 'production'
 		// const domain = isProduction ? '.e-commerce-client-opal.vercel.app' : 'localhost'
 

@@ -25,7 +25,12 @@ export async function middleware(request: NextRequest) {
 	// }
 
 	if (!token) {
-		if (pathname.startsWith('/admin')) {
+		if (
+			pathname.startsWith('/admin') ||
+			pathname.startsWith('/profile') ||
+			pathname.startsWith('/favorites') ||
+			pathname.startsWith('/orders')
+		) {
 			return Response.redirect(new URL(PAGE.HOME, request.url), 302)
 		}
 		return
@@ -35,7 +40,9 @@ export async function middleware(request: NextRequest) {
 		try {
 			const secret = new TextEncoder().encode(process.env.JWT_SECRET) // Ваш секретный ключ
 			const { payload } = await jwtVerify(token, secret)
-
+			if (pathname.includes(PAGE.LOGIN) || pathname.includes(PAGE.REGISTER)) {
+				return Response.redirect(new URL(PAGE.HOME, request.url), 302)
+			}
 			if (pathname.includes('/admin') && String(payload.role) !== String(EnumRole.ADMIN)) {
 				return Response.redirect(new URL(PAGE.HOME, request.url), 302)
 			}

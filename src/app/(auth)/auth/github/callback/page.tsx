@@ -1,15 +1,14 @@
 // pages/auth/github/callback.tsx
 'use client'
 
-import Cookies from 'js-cookie'
 import { Loader } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
 import { setAuthData } from '@/store/auth.slice'
 
+import { authService } from '@/services/auth.service'
 import { store } from '@/store'
-import { EnumTokens } from '@/types/auth.types'
 
 // pages/auth/github/callback.tsx
 
@@ -21,12 +20,13 @@ const GithubAuthCallback = () => {
 
 	useEffect(() => {
 		if (accessToken) {
-			Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
-				domain: 'localhost',
-				expires: 1 / 24,
-				sameSite: 'strict',
-				secure: true
-			})
+			// Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
+			// 	domain: 'localhost',
+			// 	expires: 1 / 24,
+			// 	sameSite: 'strict',
+			// 	secure: true
+			// })
+			authService.saveTokenStorage(accessToken)
 			if (userData) {
 				store.dispatch(setAuthData(JSON.parse(userData)))
 			}
