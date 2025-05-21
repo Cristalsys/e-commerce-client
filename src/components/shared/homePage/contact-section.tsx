@@ -1,6 +1,7 @@
 import { Mail, Phone } from 'lucide-react'
 import React from 'react'
 
+import { AnimateOnScroll } from '../AnimateOnScroll'
 import { Container } from '../container'
 import { Title } from '../title'
 
@@ -35,30 +36,34 @@ export const ContactSection: React.FC = () => {
 		<Section>
 			<Container>
 				<div className='grid grid-cols-2 gap-x-7 max-md:grid-cols-1 max-md:gap-y-6 '>
-					<div>
+					<AnimateOnScroll direction='left'>
 						<div>
-							<Title
-								size='lg'
-								className='font-semibold'
-							>
-								Reach out to us today <br /> via any of the given <br /> information
-							</Title>
-							<div className='mt-6 flex flex-col gap-6'>
-								{contactInfo.map((item, index) => (
-									<div key={index}>
-										<Title size='xs'>{item.title}</Title>
-										<span className='flex items-center mt-1 font-medium'>
-											{item.icon}
-											{item.info}
-										</span>
-									</div>
-								))}
+							<div>
+								<Title
+									size='lg'
+									className='font-semibold'
+								>
+									Reach out to us today <br /> via any of the given <br /> information
+								</Title>
+								<div className='mt-6 flex flex-col gap-6'>
+									{contactInfo.map((item, index) => (
+										<div key={index}>
+											<Title size='xs'>{item.title}</Title>
+											<span className='flex items-center mt-1 font-medium'>
+												{item.icon}
+												{item.info}
+											</span>
+										</div>
+									))}
+								</div>
 							</div>
 						</div>
-					</div>
-					<div>
-						<FormContact />
-					</div>
+					</AnimateOnScroll>
+					<AnimateOnScroll direction='right'>
+						<div>
+							<FormContact />
+						</div>
+					</AnimateOnScroll>
 				</div>
 			</Container>
 		</Section>

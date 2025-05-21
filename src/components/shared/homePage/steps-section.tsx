@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { AnimateOnScroll } from '../AnimateOnScroll'
 import { Container } from '../container'
 import { Title } from '../title'
 
@@ -35,14 +36,16 @@ export const StepsSection: React.FC = () => {
 					>
 						Steps to start your <br /> plants off right
 					</Title>
-					<div className='grid gap-8 grid-cols-3 pt-4 max-lg:grid-cols-2 max-md:grid-cols-1'>
-						{steps.map((step, index) => (
-							<StepsCard
-								key={index}
-								{...step}
-							/>
-						))}
-					</div>
+					<AnimateOnScroll>
+						<div className='grid gap-8 grid-cols-3 pt-4 max-lg:grid-cols-2 max-md:grid-cols-1'>
+							{steps.map((step, index) => (
+								<StepsCard
+									key={index}
+									{...step}
+								/>
+							))}
+						</div>
+					</AnimateOnScroll>
 				</div>
 			</Container>
 		</Section>

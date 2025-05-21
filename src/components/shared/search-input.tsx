@@ -7,6 +7,8 @@ import Link from 'next/link'
 import React from 'react'
 import { useClickAway, useDebounce } from 'react-use'
 
+import { PAGE } from '@/config/public-page.config'
+
 import { cn } from '@/lib/utils'
 import { productService } from '@/services/product.service'
 import type { IProduct } from '@/types/product.types'
@@ -79,7 +81,7 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
 								onClick={onClickItem}
 								key={product.id}
 								className='flex items-center gap-3 w-full px-3 py-2 hover:bg-secondary'
-								href={`/product/${product.id}`}
+								href={PAGE.SHOW_PRODUCT(product.id)}
 							>
 								<Image
 									src={product.imageUrls[0]}

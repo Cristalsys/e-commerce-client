@@ -23,7 +23,11 @@ export function useAdminUsers() {
 				(user): IListItem => ({
 					id: user.id,
 					editUrl: ADMIN_PAGE.EDIT_USER(user.id),
-					items: [user.name, user.email, user.role, user.phone]
+					items: [
+						user.name,
+						user.email.length > 18 ? user.email.slice(0, 18) + '...' : user.email,
+						user.role
+					]
 				})
 			)
 	})

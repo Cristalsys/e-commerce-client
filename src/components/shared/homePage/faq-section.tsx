@@ -9,6 +9,7 @@ import { Title } from '../title'
 
 import { FAQAccordion } from './FAQ-accordion'
 import { Section } from './section'
+import { AnimateOnScroll } from '../AnimateOnScroll'
 
 export const QuestionSection: React.FC = () => {
 	const [openItem, setOpenItem] = useState<string | undefined>(undefined)
@@ -62,7 +63,7 @@ export const QuestionSection: React.FC = () => {
 					Some common questions <br />
 					were often asked
 				</Title>
-
+				<AnimateOnScroll>
 				<div className='py-11'>
 					<Accordion
 						type='single'
@@ -80,6 +81,7 @@ export const QuestionSection: React.FC = () => {
 						))}
 					</Accordion>
 				</div>
+				</AnimateOnScroll>
 			</Container>
 		</Section>
 	)

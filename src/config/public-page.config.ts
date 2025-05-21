@@ -3,7 +3,7 @@ class PublicPage {
 	REGISTER = '/register'
 
 	HOME = '/'
-	FAVORITES = `${this.HOME}/favorites`
+	FAVORITES = `/favorites`
 
 	ABOUT = '#about'
 	PRODUCTS = '#products'

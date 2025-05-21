@@ -23,7 +23,7 @@ export const Users: React.FC<Props> = () => {
 			/>
 			<AdminList
 				listItems={users || []}
-				headerItems={['Name', 'Email', 'Role', 'Phone']}
+				headerItems={['Name', 'Email', 'Role']}
 				isLoading={isLoading}
 				removeHandler={deleteAsync}
 			/>
